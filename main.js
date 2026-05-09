@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const polaroids = document.querySelectorAll('.polaroid-frame');
+  const cards = document.querySelectorAll('.card-premium, .food-card-minimal');
 
   const observerOptions = {
     threshold: 0.1,
@@ -10,17 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = '1';
-        entry.target.style.transform = entry.target.style.transform.replace('translateY(50px)', 'translateY(0)');
+        entry.target.style.transform = 'translateY(0) scale(1)';
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  polaroids.forEach(p => {
+  cards.forEach(p => {
     p.style.opacity = '0';
-    p.style.transition = 'all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    const currentTransform = window.getComputedStyle(p).transform;
-    p.style.transform = `translateY(50px)`;
+    p.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+    p.style.transform = 'translateY(40px) scale(0.95)';
     observer.observe(p);
   });
 
